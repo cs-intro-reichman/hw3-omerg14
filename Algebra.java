@@ -79,7 +79,7 @@ public class Algebra {
 	
 	public static int sqrt(int x) {
 		int result = 0;
-		for (int i = 0; i * i <= x; i++) {
+		for (int i = 0; pow(i, i) <= x; i++) {
 			result = i;
 		}
 		return result;
