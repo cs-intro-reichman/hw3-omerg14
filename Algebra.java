@@ -63,26 +63,14 @@ public class Algebra {
 	}
 
 	public static int pow(int x, int n) {
-		int result = 1;
 		if (n == 0) {
 			return 1; 
-		} else if (x == 0 && n > 0) {
-			return 0; 
-		} else if (n < 0 && x < 0) {
-			return 0; 
-		} else if (n > 0 && x > 0) {
-			for (int i = 0; i < n; i++) {
-				result = times(result, x);
-			}
-		} else if (x < 0 && n > 0) {
-			x = -x;
-			for (int i = 0; i < n; i++) {
-				result = times(result, x);
-			}
-		} else if (x > 0 && n < 0) {
-			return 0; 
+		} 
+		int x1 = x;
+		for (int i = 1; i < n; i++) {
+			x1 = times(x1, x);
 		}
-		return result;
+		return x1;
 	}
 	
 	public static int div(int x1, int x2) {
