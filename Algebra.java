@@ -19,17 +19,20 @@ public class Algebra {
 	}  
 
 	public static int plus(int x1, int x2) {
-		for (int i = 0; i < x2; i++) {
-			x1++;
+		if (x2 > 0) {
+			for (int i = 0; i < x2; i++) {
+				x1++;
+			}
+		} else {
+			for (int i = 0; i > x2; i--) {
+				x1--;
+			}
 		}
 		return x1;
 	}
-
+	
 	public static int minus(int x1, int x2) {
-		for (int i = 0; i < x2; i++) {
-			x1--;
-		}
-		return x1;
+		return plus(x1, -x2);
 	}
 
 	public static int times(int x1, int x2) {
@@ -60,16 +63,17 @@ public class Algebra {
 	}
 
 	public static int pow(int x, int n) {
+		int result = 1;
 		if (n == 0) {
 			return 1; 
 		} else if (x == 0 && n > 0) {
 			return 0; 
-		} else if (n < 0) {
+		} else if (n < 0 && x < 0) {
 			return 0; 
-		}
-		int result = 1;
-		for (int i = 0; i < n; i++) {
-			result = times(result, x);
+		} else if (n > 0 && x > 0) {
+			for (int i = 0; i < n; i++) {
+				result = times(result, x);
+			}
 		}
 		return result;
 	}
@@ -99,14 +103,13 @@ public class Algebra {
 		if (x2 == 0) {
 			throw new ArithmeticException("Division by zero");
 		}
-		int result = x1;
-		while (result >= x2) {
-			result -= x2;
+		while (x1 >= x2) {
+			x1 = minus(x1, x2);
 		}
-		if (result < 0) {
-			result += x2;
+		if (x1 < 0) {
+			x1 = plus(x1, x2);
 		}
-		return result;
+		return x1;
 	}
 	
 	public static int sqrt(int x) {
