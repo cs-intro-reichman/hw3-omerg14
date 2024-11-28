@@ -23,9 +23,7 @@ public class Anagram {
     public static boolean isAnagram(String str1, String str2) {
         String newStr1 = preProcess(str1); 
         String newStr2 = preProcess(str2); 
-        if (newStr1.length() != newStr2.length()) {
-            return false;
-        }
+        
         for (int i = 0; i < newStr1.length(); i++) {
             char c = newStr1.charAt(i);
             if (newStr2.indexOf(c) == -1) {
@@ -47,8 +45,8 @@ public class Anagram {
     }
 
     public static String preProcess(String str) {
-        String s1 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        String s2 = "abcdefghijklmnopqrstuvwxyz";
+        String s1 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ ";
+        String s2 = "abcdefghijklmnopqrstuvwxyz ";
         String s3 = "";
         
         for (int i = 0; i < str.length(); i++) {
