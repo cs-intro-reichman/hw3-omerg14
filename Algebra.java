@@ -79,6 +79,8 @@ public class Algebra {
 			for (int i = 0; i < n; i++) {
 				result = times(result, x);
 			}
+		} else if (x > 0 && n < 0) {
+			return 0; 
 		}
 		return result;
 	}
